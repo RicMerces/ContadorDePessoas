@@ -45,4 +45,19 @@ column
 ```
 
 
+Codigo inicial 
+
+```dart
+void main() {
+  runApp(
+    MaterialApp(
+      home: Container(
+        color: Colors.red,
+      ),
+    ),
+  );
+}
+```
+
+
 
