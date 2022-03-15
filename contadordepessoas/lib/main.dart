@@ -20,10 +20,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.pink,
-      alignment: Alignment.center,
-      child: const Text('Ola Mundo'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Ola Mundo !'),
+      ),
+      drawer: Drawer(),
     );
   }
 }
