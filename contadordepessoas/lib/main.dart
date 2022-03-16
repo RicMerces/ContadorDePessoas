@@ -72,7 +72,7 @@ class _MainState extends State<HomePage> {
                       ? 'Vazio'
                       : 'Pode entrar',
               style: TextStyle(
-                color: Colors.white,
+                color: isFull ? Colors.red : Colors.white,
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
@@ -85,7 +85,7 @@ class _MainState extends State<HomePage> {
               child: Text(
                 '$count',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: isFull ? Colors.red : Colors.white,
                   fontSize: 100,
                 ),
               ),
