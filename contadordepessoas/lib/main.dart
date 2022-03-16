@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/Images/image.jpg'),
+            image: AssetImage('assets/images/europe.jpg'),
           ),
         ),
         child: Column(
