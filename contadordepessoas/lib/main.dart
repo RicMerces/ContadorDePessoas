@@ -29,27 +29,30 @@ class _MainState extends State<HomePage> {
   void decrement() {
     setState(() {
       count--;
-      if (count < 0) {
-        count = 0;
-      }
+      // if (count < 0) {
+      //   count = 0;
+      // }
     });
 
-    print(count);
+    // print(count);
   }
 
   void increment() {
     setState(() {
       count++;
-      if (count > 20) {
-        count = 20;
-      }
+      // if (count > 20) {
+      //   count = 20;
+      // }
     });
-    print(count);
+    // print(count);
   }
+
+  bool get isEmpty => count == 0;
+  bool get isFull => count == 20;
 
   @override
   Widget build(BuildContext context) {
-    print('build');
+    // print('build');
     return Scaffold(
       backgroundColor: Colors.orange,
       body: Container(
@@ -62,8 +65,12 @@ class _MainState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Pode entrar',
+            Text(
+              isFull
+                  ? 'Lotado'
+                  : isEmpty
+                      ? 'Vazio'
+                      : 'Pode entrar',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 30,
@@ -88,13 +95,15 @@ class _MainState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   child: const Text(
                     'Saiu',
                     style: TextStyle(color: Colors.black, fontSize: 24),
                   ),
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor: isEmpty
+                          ? Colors.white.withOpacity(0.4)
+                          : Colors.white,
                       fixedSize: const Size(100, 100),
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(
@@ -105,7 +114,7 @@ class _MainState extends State<HomePage> {
                   width: 30,
                 ),
                 TextButton(
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   child: const Text(
                     'Entrou',
                     style: TextStyle(
@@ -114,7 +123,8 @@ class _MainState extends State<HomePage> {
                     ),
                   ),
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor:
+                          isFull ? Colors.white.withOpacity(0.4) : Colors.white,
                       fixedSize: const Size(100, 100),
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(
