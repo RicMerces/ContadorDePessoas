@@ -9,31 +9,54 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  _MainState createState() => _MainState();
+}
+
+class _MainState extends State<HomePage> {
+  int count = 0;
+
   void decrement() {
-    print('decrement');
+    setState(() {
+      count--;
+      if (count < 0) {
+        count = 0;
+      }
+    });
+
+    print(count);
   }
 
   void increment() {
-    print('increment');
+    setState(() {
+      count++;
+      if (count > 20) {
+        count = 20;
+      }
+    });
+    print(count);
   }
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     return Scaffold(
       backgroundColor: Colors.orange,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/europe.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(
@@ -50,10 +73,10 @@ class HomePage extends StatelessWidget {
 
             // const SizedBox(height: 30),
 
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(30),
               child: Text(
-                '0',
+                '$count',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 100,
@@ -71,7 +94,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(color: Colors.black, fontSize: 24),
                   ),
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white60,
+                      backgroundColor: Colors.white,
                       fixedSize: const Size(100, 100),
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(
@@ -91,7 +114,7 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   style: TextButton.styleFrom(
-                      backgroundColor: Colors.white60,
+                      backgroundColor: Colors.white,
                       fixedSize: const Size(100, 100),
                       primary: Colors.black,
                       shape: RoundedRectangleBorder(
